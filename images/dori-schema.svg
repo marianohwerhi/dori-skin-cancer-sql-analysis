@@ -1,0 +1,70 @@
+<svg width="900" height="480" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <rect width="900" height="480" fill="#ffffff"/>
+
+  <!-- Table 1: patient-level -->
+  <g>
+    <rect x="60" y="60" width="330" height="330" rx="12" fill="#ffffff" stroke="#e4e6ea" stroke-width="1"/>
+    <rect x="60" y="60" width="330" height="52" rx="12" fill="#0c6b54"/>
+    <rect x="60" y="86" width="330" height="26" fill="#0c6b54"/>
+    <text x="82" y="93" fill="#ffffff" font-size="15" font-weight="600">table1</text>
+    <text x="82" y="111" fill="#e1f5ee" font-size="12" font-weight="400">Patient-level information</text>
+
+    <!-- fields -->
+    <g font-size="13.5" fill="#14181f">
+      <text x="82" y="146" font-weight="600">patient_id</text>
+      <text x="330" y="146" fill="#6b7280" font-size="11.5" text-anchor="end">PK</text>
+      <line x1="82" y1="156" x2="368" y2="156" stroke="#f7f8f7" stroke-width="1"/>
+
+      <text x="82" y="180" fill="#4b5563">age</text>
+      <text x="82" y="208" fill="#4b5563">gender</text>
+      <text x="82" y="236" fill="#4b5563">skin_cancer_history</text>
+      <text x="82" y="264" fill="#4b5563">smoke</text>
+      <text x="82" y="292" fill="#4b5563">drink</text>
+    </g>
+
+    <line x1="82" y1="308" x2="368" y2="308" stroke="#e4e6ea" stroke-width="1"/>
+    <text x="82" y="332" fill="#6b7280" font-size="12" font-style="italic">+ 2 more attributes</text>
+    <text x="82" y="352" fill="#6b7280" font-size="12" font-style="italic">(piped water, sewage access)</text>
+
+    <text x="82" y="382" fill="#6b7280" font-size="12">1,088 patient records</text>
+  </g>
+
+  <!-- Table 2: lesion-level -->
+  <g>
+    <rect x="510" y="60" width="330" height="360" rx="12" fill="#ffffff" stroke="#e4e6ea" stroke-width="1"/>
+    <rect x="510" y="60" width="330" height="52" rx="12" fill="#0c6b54"/>
+    <rect x="510" y="86" width="330" height="26" fill="#0c6b54"/>
+    <text x="532" y="93" fill="#ffffff" font-size="15" font-weight="600">table2</text>
+    <text x="532" y="111" fill="#e1f5ee" font-size="12" font-weight="400">Lesion-level information</text>
+
+    <g font-size="13.5" fill="#14181f">
+      <text x="532" y="146" fill="#4b5563">lesion_id</text>
+      <text x="780" y="146" fill="#6b7280" font-size="11.5" text-anchor="end">not unique</text>
+
+      <text x="532" y="174" font-weight="600">patient_id</text>
+      <text x="780" y="174" fill="#6b7280" font-size="11.5" text-anchor="end">FK</text>
+      <line x1="532" y1="184" x2="818" y2="184" stroke="#f7f8f7" stroke-width="1"/>
+
+      <text x="532" y="208" fill="#4b5563">diagnostic</text>
+      <text x="532" y="236" fill="#4b5563">region</text>
+      <text x="532" y="264" fill="#4b5563">diameter_1, diameter_2</text>
+      <text x="532" y="292" fill="#4b5563">grew</text>
+      <text x="532" y="320" fill="#4b5563">biopsed</text>
+    </g>
+
+    <line x1="532" y1="336" x2="818" y2="336" stroke="#e4e6ea" stroke-width="1"/>
+    <text x="532" y="360" fill="#6b7280" font-size="12" font-style="italic">+ 5 symptom fields</text>
+    <text x="532" y="380" fill="#6b7280" font-size="12" font-style="italic">(itch, hurt, changed, bleed, elevation)</text>
+
+    <text x="532" y="412" fill="#6b7280" font-size="12">1,088 lesion records</text>
+  </g>
+
+  <!-- Relationship connector -->
+  <line x1="390" y1="146" x2="510" y2="174" stroke="#0c6b54" stroke-width="1.5"/>
+  <circle cx="390" cy="146" r="3.5" fill="#0c6b54"/>
+  <circle cx="510" cy="174" r="3.5" fill="#0c6b54"/>
+
+  <rect x="393" y="140" width="115" height="42" rx="8" fill="#e1f5ee"/>
+  <text x="450" y="157" fill="#094f3e" font-size="12" font-weight="600" text-anchor="middle">patient_id</text>
+  <text x="450" y="173" fill="#0c6b54" font-size="11" text-anchor="middle">Validated join key</text>
+</svg>
