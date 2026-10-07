@@ -27,9 +27,9 @@ identifying patterns that could help inform screening priorities.
 - **6 diagnostic categories**: BCC, SCC, MEL (malignant); ACK, NEV, SEK (non-malignant)
 - **346 malignant diagnoses (31.8%)** of the total dataset
 - Two tables:
-  - `table1` — patient-level: `patient_id`, `age`, `gender`, `skin_cancer_history`, `smoke`,
+  - `table1`: patient-level: `patient_id`, `age`, `gender`, `skin_cancer_history`, `smoke`,
     `drink`, `has_piped_water`, `has_sewage_system`
-  - `table2` — lesion-level: `lesion_id`, `patient_id` (FK), `diagnostic`, `region`,
+  - `table2`: lesion-level: `lesion_id`, `patient_id` (FK), `diagnostic`, `region`,
     `diameter_1`, `diameter_2`, `grew`, `biopsed`, plus symptom flags (`itch`, `hurt`,
     `changed`, `bleed`, `elevation`)
 
@@ -41,9 +41,9 @@ Before any analysis, the following checks were run (full queries in `sql/dori_sk
 
 | Check | Result |
 |---|---|
-| `lesion_id` global uniqueness | 1,088 total vs 1,007 distinct — `lesion_id` was not globally unique despite being described as unique in the data documentation |
-| Duplicate `patient_id` in `table2` | 0 rows — each patient has exactly one lesion record |
-| Orphan `patient_id` in `table2` | 0 rows — every lesion maps to a real patient |
+| `lesion_id` global uniqueness | 1,088 total vs 1,007 distinct. `lesion_id` was not globally unique despite being described as unique in the data documentation |
+| Duplicate `patient_id` in `table2` | 0 rows. Each patient has exactly one lesion record |
+| Orphan `patient_id` in `table2` | 0 rows. Every lesion maps to a real patient |
 | NULLs in key `table1` fields (age, gender, skin_cancer_history) | 0 across all three |
 | NULLs in key `table2` fields (diagnostic, region, diameters, grew, biopsed) | 0 across all |
 | Duplicate `patient_id` in `table1` | 0 rows |
@@ -65,7 +65,7 @@ and rates were calculated where relevant, since they answer different analytical
 ## Key Findings
 
 - **Previous skin cancer history**: 70.1% observed malignancy rate (documented history) vs
-  21.9% (no history) — the strongest observed association in the dataset.
+  21.9% (no history), the strongest observed association in the dataset.
 - **Lesion growth**: 50.8% observed malignancy rate for growing lesions vs 15.1% for stable
   ones.
 - **Lesion diameter**: MEL recorded the highest average diameter (14.09mm), followed by SCC
@@ -76,7 +76,7 @@ and rates were calculated where relevant, since they answer different analytical
   rate, against 70.6% (smoking only), 68.2% (drinking only), and 24.5% (neither).
 - **Counts vs. rates**: The 60–74 age group had the highest number of malignant diagnoses
   (120 cases), while the 75+ group had the highest observed malignancy rate (43.9%). Counts
-  describe volume; rates describe proportion — keeping them separate prevented a
+  describe volume; rates describe proportion. Keeping them separate prevented a
   high-volume group from being misread as the highest-rate group.
 - **Sanitation access**: Patients with piped water/sewage access showed higher observed
   malignancy rates than those without (~63% vs ~20%). This counterintuitive association may
@@ -99,7 +99,7 @@ clinically validated.
 - Data-quality checks: `COUNT` vs `COUNT DISTINCT`, `LEFT JOIN` for orphan-record detection,
   NULL and duplicate checks
 
-The full set of queries — required analysis, additional analysis, and data-quality checks —
+The full set of queries, covering the main analysis, follow-up questions and data-quality checks,
 is in [`sql/dori_skin_cancer_analysis.sql`](sql/dori_skin_cancer_analysis.sql).
 
 ![pgAdmin screenshot of the previous-history malignancy-rate query and its output](images/pgadmin-prior-history.png)
@@ -119,7 +119,7 @@ is in [`sql/dori_skin_cancer_analysis.sql`](sql/dori_skin_cancer_analysis.sql).
 
 - All findings are observational associations, not causal relationships.
 - The sanitation-access finding may reflect an unmeasured factor (such as healthcare access
-  or screening frequency) rather than a direct risk factor — this dataset does not
+  or screening frequency) rather than a direct risk factor. This dataset does not
   establish the explanation.
 - The dataset represents a single point-in-time snapshot; no longitudinal tracking of
   individual patients over time.
@@ -134,18 +134,16 @@ dori-skin-cancer-sql-analysis/
 ├── README.md
 ├── sql/
 │   └── dori_skin_cancer_analysis.sql
-├── images/
-│   ├── dori-schema.svg
-│   ├── dori-schema.png
-│   ├── malignancy-by-region.svg
-│   ├── malignancy-by-region.png
-│   ├── dori-data-quality.png
-│   └── pgadmin-prior-history.png
-└── report/
-    └── DORI_Skin_Cancer_Analysis.pdf
+└── images/
+    ├── dori-schema.svg
+    ├── dori-schema.png
+    ├── malignancy-by-region.svg
+    ├── malignancy-by-region.png
+    ├── dori-data-quality.png
+    └── pgadmin-prior-history.png
 ```
 
 ## Portfolio Case Study
 
-The full recruiter-facing write-up, with visuals and narrative context, is here:
+The full write-up, with visuals and context, is here:
 https://marianohwerhi.github.io/portfolio-website/case-studies/dori-skin-cancer-risk-intelligence.html
